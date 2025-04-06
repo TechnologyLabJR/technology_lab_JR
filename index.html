@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technology Lab JR</title>
+  <style>
+    :root {
+      --fondo: #ffffff;
+      --texto: #000000;
+      --enlace: #0066cc;
+      --fondo-header: #0033cc;
+      --boton-redes: #0033cc;
+      --boton-redes-hover: #001f99;
+      --texto-redes: #ffffff;
+    }
+
+    body.dark-mode {
+      --fondo: #121212;
+      --texto: #f0f0f0;
+      --enlace: #00ffff;
+      --fondo-header: #000000;
+      --boton-redes: #222;
+      --boton-redes-hover: #444;
+      --texto-redes: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--fondo-header);
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 120px;
+      margin-right: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, p, ul {
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    ul {
+      list-style-position: inside;
+      padding: 0;
+    }
+
+    .section {
+      padding: 40px 20px;
+    }
+
+    .trabajos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .trabajo img {
+      width: 100%;
+      max-width: 300px;
+      border: 2px solid #000;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .trabajo img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .trabajo p {
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 0 auto;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 1em;
+    }
+
+    .contacto p {
+      text-align: center;
+    }
+
+    .contacto a {
+      color: var(--enlace);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contacto a:hover {
+      text-decoration: underline;
+    }
+
+
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      z-index: 9999;
+    }
+
+    .modo-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: #00ffff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .redes-sociales {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .redes-sociales a {
+      background-color: var(--boton-redes);
+      color: var(--texto-redes);
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .redes-sociales a:hover {
+      background-color: var(--boton-redes-hover);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--fondo-header);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .trabajos {
+        flex-direction: column;
+        padding: 0 10px;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <button class="modo-btn" onclick="toggleMode()">🌙/☀️</button>
+
+  <header>
+    <div style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center;">
+      <img src="logo.png" alt="Logo Technology Lab JR">
+      <div>
+        <h1>Technology Lab JR</h1>
+        <p>Soluciones en mantenimiento, reparación y periféricos</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="section" id="inicio">
+    <h2>Bienvenido</h2>
+    <p><strong>Technology Lab JR – Tu aliado en reparación y mantenimiento de computadores</strong><br>
+      Ubicados en Barranquilla, en Technology Lab JR nos especializamos en la reparación y mantenimiento de computadores. Nuestro equipo, liderado por un profesional apasionado y altamente capacitado, ofrece soluciones personalizadas y eficientes para optimizar el rendimiento de tus dispositivos.<br>
+      Con un compromiso inquebrantable con la calidad y la mejora continua, nos esforzamos por ser la opción de confianza en el mercado local, brindando un servicio justo, responsable y orientado a resultados.
+    </p>
+  </section>
+
+  <section class="section" id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+      <li>Mantenimiento preventivo y correctivo</li>
+      <li>Reparación de hardware y software</li>
+      <li>Instalación de sistemas operativos y programas</li>
+      <li>Venta de accesorios y periféricos</li>
+    </ul>
+  </section>
+
+  <section class="section trabajos" id="trabajos">
+    <h2>Trabajos realizados</h2>
+    <div class="trabajo">
+      <img src="trabajo1.jpg" alt="Trabajo 1">
+      <p>CAMBIO DE DISCO DURO</p>
+    </div>
+    <div class="trabajo">
+      <img src="trabajo2.jpg" alt="Trabajo 2">
+      <p>INSTALACIÓN DE SISTEMA OPERATIVO</p>
+    </div>
+  </section>
+
+  <section class="section contacto" id="contacto">
+    <h2>Contáctanos</h2>
+    <form action="https://formsubmit.co/technologylabjr@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="message" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p><strong>Whatsapp:</strong> <a href="https://wa.me/573215781968">Contáctanos</a></p>
+    <p><strong>Correo:</strong> <a href="mailto:technologylabjr@gmail.com">technologylabjr@gmail.com</a></p>
+
+    <div class="redes-sociales">
+      <a href="https://www.facebook.com/362816483589933" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/technologylabjr" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@technologylabjr?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+    </div>
+  </section>
+
+  <a href="https://wa.me/573215781968" class="whatsapp" target="_blank">💬</a>
+
+  <footer>
+    <p>&copy; 2025 Technology Lab JR. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('modo', document.body.classList.contains('dark-mode') ? 'oscuro' : 'claro');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const modoSistema = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const modoGuardado = localStorage.getItem('modo');
+      if (modoGuardado === 'oscuro' || (!modoGuardado && modoSistema)) {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+</body>
+</html>
