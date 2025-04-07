@@ -644,5 +644,55 @@ form button:hover {
       }
     }
   </script>
+  
+  <script>
+    // Obtención de elementos del DOM
+    formulario = document.getElementById('formulario');
+    mensaje = document.getElementById('mensaje-enviado');
+
+    // Validación y manejo del formulario
+    if (formulario && mensaje) {
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault(); // Previene el envío por defecto temporalmente
+
+            const campos = formulario.querySelectorAll('input, textarea');
+            let formularioValido = true;
+
+            // Validación de los campos
+            campos.forEach(campo => {
+                if (!campo.value.trim()) {
+                    campo.style.border = '2px solid red'; // Marca los campos no válidos
+                    formularioValido = false;
+                } else {
+                    campo.style.border = '2px solid green'; // Marca los campos válidos
+                }
+            });
+
+            if (formularioValido) {
+                // Envío del formulario a GetForm
+                fetch(formulario.action, {
+                    method: formulario.method,
+                    body: new FormData(formulario) // Envía los datos al servidor
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Acción tras envío exitoso
+                        mensaje.style.display = 'block'; // Muestra el mensaje de éxito
+                        formulario.reset(); // Limpia las casillas
+                        campos.forEach(campo => campo.style.border = ''); // Reinicia los bordes
+                    } else {
+                        alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un problema con el envío del formulario.');
+                });
+            } else {
+                mensaje.style.display = 'none'; // Oculta el mensaje si la validación falla
+            }
+        });
+    }
+</script>
 </body>
 </html>
