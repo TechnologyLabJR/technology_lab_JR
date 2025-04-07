@@ -6,6 +6,16 @@
   <title>Technology Lab JR</title>
 
   <style>
+    #mensaje-enviado {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #mensaje-enviado.mostrar {
+      display: block;
+      opacity: 1;
+    }
     :root {
       --fondo: #ffffff;
       --texto: #000000;
@@ -14,6 +24,10 @@
       --boton-redes: #0033cc;
       --boton-redes-hover: #001f99;
       --texto-redes: #ffffff;
+      :root {
+  --color-principal: #0033cc;
+}
+
     }
 
     body.dark-mode {
@@ -82,27 +96,27 @@ body.dark-mode .redes-sociales a:hover {
       padding: 10px 22px;
       position: relative;
     }
-
     .logo-container {
-      display: flex;
-      align-items: center;
-      margin-right: auto;
-      margin-left: 20px;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+}
+.logo-text {
+  text-align: center;
+  flex: 1;
+}
 
-    .logo-container img {
-      height: 100px;
-      object-fit: contain;
-      margin-right: 15px;
-    }
+.logo-img {
+  margin-left: auto;
+}
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .logo-text h1 {
+.logo-img img {
+  max-height: 100px;
+  width: auto;
+}
+ .logo-text h1 {
       font-size: 30px;
       margin: 0;
       color: white;
@@ -121,25 +135,47 @@ body.dark-mode .redes-sociales a:hover {
       cursor: pointer;
     }
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: var(--fondo-header);
-      color: white;
-      padding: 20px;
-      transition: left 0.3s;
-      z-index: 9998;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+   .sidebar {
+  position: fixed;
+  top: 70;
+  left: 0;
+  width: 0;
+  height: calc(100% - 70px);
+  background: linear-gradient(135deg, var(--fondo-header), #0e1b3a); /* degradado elegante */
+  color: white;
+  padding: 0;
+  overflow: hidden;
+  transition: width 0.4s ease, padding 0.3s ease;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4); /* sombra para darle profundidad */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.sidebar a {
+  padding: 12px 20px;
+  display: block;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
 
-    .sidebar.active {
-      left: 0;
-    }
+
+/* Cuando se activa */
+.sidebar.active {
+  width: 260px;
+  padding: 30px 20px;
+}
+
+
 
     .sidebar a {
       color: white;
@@ -175,13 +211,14 @@ body.dark-mode .redes-sociales a:hover {
   text-align: center;
 }
 
-    .trabajo img {
-      width: 100%;
-      max-width: 300px;
-      border: 2px solid #000;
-      border-radius: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.trabajo img {
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombra sutil */
+}
 
     .trabajo img:hover {
       transform: scale(1.05);
@@ -262,7 +299,7 @@ form button:hover {
 
     .modo-btn {
   position: fixed;
-  top: 130px;
+  top: 200px;
   right: 20px;
   z-index: 9999;
   background: #00ffff;
@@ -290,26 +327,15 @@ form button:hover {
   border-radius: 30px;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* sombra más suave */
 }
 
 .redes-sociales a:hover {
   background-color: var(--boton-redes-hover);
   transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); /* sombra más fuerte al pasar el mouse */
 }
-
-
-.redes-sociales a:hover {
-  transform: scale(1.05);
-  background-color: #1ebe5d;
-}
-
-
-    .redes-sociales a:hover {
-      background-color: var(--boton-redes-hover);
-      transform: scale(1.05);
-    }
 
     footer {
       text-align: center;
@@ -318,46 +344,60 @@ form button:hover {
       color: white;
     }
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.modo-btn {
-  top: 70px;
-  right: 20px;
-}
-
-
-      .logo-container img {
-        height: 70px;
-      }
-
-      .logo-text h1 {
-        font-size: 16px;
-      }
-
-      .logo-text span {
-        font-size: 10px;
-      }
-    }
-
     @media (max-width: 480px) {
-      .trabajo img {
-        max-width: 90%;
-      }
+  body {
+    padding: 10px;
+  }
 
-      form {
-        padding: 0 10px;
-      }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
 
-      .whatsapp {
-        font-size: 14px;
-        padding: 10px 15px;
-      }
-    }
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .logo-text h1 {
+    font-size: 18px;
+  }
+
+  .logo-text span {
+    font-size: 12px;
+  }
+
+  .hamburger {
+    top: 10px;
+    left: 10px;
+  }
+
+  .section {
+    padding: 20px 10px;
+  }
+
+  form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .trabajo img {
+    max-width: 100%;
+  }
+
+  .modo-btn {
+    top: 90px;
+    right: 15px;
+  }
+
+  .whatsapp {
+    bottom: 80px;
+    right: 15px;
+  }
+}
 
     .texto-centrado {
   max-width: 700px;
@@ -365,19 +405,53 @@ form button:hover {
   padding: 0 15px;
   text-align: justify;
 }
+.hamburger {
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  z-index: 10000; /* Este valor lo pone por encima de todo */
+}
+.hamburger .bar {
+  width: 30px;
+  height: 4px;
+  background-color: white; /* O #fff para que se vea sobre el fondo azul */
+  margin: 5px 0;
+  border-radius: 2px;
+}
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
   </style>
 </head>
 <body>
+  <div class="hamburger" id="menu-toggle" onclick="toggleSidebar()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  
   <header>
     <div class="logo-container">
-      <img src="logo.png" alt="Logo Technology Lab JR">
       <div class="logo-text">
         <h1>Technology Lab JR</h1>
         <span>Soluciones en mantenimiento, reparación y periféricos</span>
       </div>
+      <div class="logo-img">
+        <img src="logo.png" alt="Logo Technology Lab JR">
+      </div>
     </div>
-    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('active')">☰</button>
-  </header>
+    
+      </header>
 
   <nav id="sidebar" class="sidebar">
     <a href="#inicio">Inicio</a>
@@ -387,7 +461,8 @@ form button:hover {
     <a href="#redes">Redes Sociales</a>
   </nav>
 
-  <section id="inicio" class="section">
+  <section id="inicio" class="section"
+  >
     <h2>Bienvenido a Technology Lab JR</h2>
 
     <div class="texto-centrado">
@@ -463,24 +538,49 @@ form button:hover {
   </footer>
 
   <script>
-    document.getElementById('formulario').addEventListener('submit', function(e) {
-      e.preventDefault();
-      setTimeout(() => {
-        document.getElementById('mensaje-enviado').style.display = 'block';
-      }, 2000);
-    });
+    formulario = document.getElementById('formulario ');
+     mensaje = document.getElementById('mensaje-enviado');
+  
+    if (formulario && mensaje) {
+      formulario.addEventListener('submit', function(e) {
+        e.preventDefault();
+  
+        const campos = formulario.querySelectorAll('input, textarea');
+        let formularioValido = true;
+  
+        campos.forEach(campo => {
+          if (!campo.value.trim()) {
+            campo.style.border = '2px solid red';
+            formularioValido = false;
+          } else {
+            campo.style.border = '2px solid green';
+          }
+        });
+  
+        if (formularioValido) {
+          setTimeout(() => {
+            mensaje.style.display = 'block';
+            formulario.reset();
+            campos.forEach(campo => campo.style.border = '');
+          }, 500);
+        } else {
+          mensaje.style.display = 'none';
+        }
+      });
+    }
   </script>
+
   <script>
+    // ---------- MODO CLARO/OSCURO ----------
     const body = document.body;
     const btn = document.getElementById('modo-toggle');
   
-    // Verificar y aplicar el modo guardado
     const modoGuardado = localStorage.getItem('modo');
     if (modoGuardado === 'oscuro') {
       body.classList.add('dark-mode');
-      btn.textContent = '🌞'; // Mostrar sol cuando esté en modo oscuro
+      btn.textContent = '🌞';
     } else {
-      btn.textContent = '🌙'; // Mostrar luna cuando esté en modo claro
+      btn.textContent = '🌙';
     }
   
     function toggleModo() {
@@ -489,23 +589,83 @@ form button:hover {
       btn.textContent = esOscuro ? '🌞' : '🌙';
       localStorage.setItem('modo', esOscuro ? 'oscuro' : 'claro');
     }
+  </script>
   
-    // Mostrar mensaje después de enviar el formulario
-    document.getElementById('formulario').addEventListener('submit', function(e) {
-      e.preventDefault();
-      setTimeout(() => {
-        document.getElementById('mensaje-enviado').style.display = 'block';
-      }, 2000);
-    });
-  </script>  
-
   <script>
-    // Cerrar el menú cuando se hace clic en un enlace
+    // ---------- CERRAR MENÚ AL HACER CLIC EN ENLACE ----------
     document.querySelectorAll('.sidebar a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('sidebar').classList.remove('active');
       });
     });
   </script>
+  
+  <script>
+    // ---------- BOTÓN HAMBURGUESA / SIDEBAR ----------
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('menu-toggle');
+  
+    function toggleSidebar() {
+      const isOpen = sidebar.style.width !== '0px' && sidebar.style.width !== '';
+  
+      if (isOpen) {
+        closeSidebar();
+      } else {
+        sidebar.style.width = '250px';
+        sidebar.style.padding = '20px';
+        toggle.classList.add('active');
+  
+        setTimeout(() => {
+          document.addEventListener('click', outsideClickHandler);
+        }, 10);
+      }
+  
+      const links = sidebar.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', closeSidebar);
+      });
+    }
+  
+    function closeSidebar() {
+      sidebar.style.width = '0';
+      sidebar.style.padding = '0';
+      toggle.classList.remove('active');
+  
+      document.removeEventListener('click', outsideClickHandler);
+    }
+  
+    function outsideClickHandler(e) {
+      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        closeSidebar();
+      }
+    }
+  </script>
+  <script>
+    const formulario = document.getElementById("formulario");
+    const mensaje = document.getElementById("mensaje-enviado");
+  
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault(); // Evita que se recargue la página
+  
+      const campos = formulario.querySelectorAll("input, textarea");
+      let formularioValido = true;
+  
+      campos.forEach((campo) => {
+        if (!campo.value.trim()) {
+          campo.style.border = "2px solid red";
+          formularioValido = false;
+        } else {
+          campo.style.border = "2px solid green";
+        }
+      });
+  
+      if (formularioValido) {
+        mensaje.style.display = "block";
+        formulario.reset(); // Limpia los campos
+      } else {
+        mensaje.style.display = "none";
+      }
+    });
+  </script>  
 </body>
 </html>
