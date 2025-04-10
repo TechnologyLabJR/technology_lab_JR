@@ -612,74 +612,62 @@ form button:hover {
     }
   </script>
   
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const formulario = document.getElementById("formulario");
-    const mensaje = document.getElementById("mensaje-enviado");
-
-    if (formulario && mensaje) {
-      formulario.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const campos = formulario.querySelectorAll("input, textarea");
-        let formularioValido = true;
-
-        campos.forEach((campo) => {
-          if (!campo.value.trim()) {
-            campo.style.border = "2px solid red";
-            formularioValido = false;
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const formulario = document.getElementById("formulario");
+      const mensaje = document.getElementById("mensaje-enviado");
+  
+      if (formulario && mensaje) {
+        formulario.addEventListener("submit", function(e) {
+          e.preventDefault();
+  
+          const campos = formulario.querySelectorAll("input, textarea");
+          let formularioValido = true;
+  
+          campos.forEach(campo => {
+            if (!campo.value.trim()) {
+              campo.style.border = "2px solid red";
+              formularioValido = false;
+            } else {
+              campo.style.border = "2px solid green";
+            }
+          });
+  
+          if (formularioValido) {
+            fetch(formulario.action, {
+              method: formulario.method,
+              body: new FormData(formulario)
+            })
+            .then(response => {
+              if (response.ok) {
+                mensaje.style.display = 'block';
+  
+                formulario.reset(); // ✅ Limpiar campos
+                campos.forEach(campo => campo.style.border = ''); // ✅ Resetear bordes
+  
+                setTimeout(() => {
+                  mensaje.style.display = 'none';
+                }, 5000);
+              } else {
+                alert('Hubo un error al enviar el mensaje.');
+              }
+            })
+            .catch(error => {
+              alert('Ocurrió un problema: ' + error.message);
+            });
           } else {
-            campo.style.border = "2px solid green";
+            mensaje.style.display = 'none';
           }
         });
-
-            if (formularioValido) {
-                // Envío del formulario a Formspree
-                fetch(formulario.action, {
-                    method: formulario.method,
-                    body: new FormData(formulario) // Envía los datos al servidor
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Acción tras envío exitoso
-                        mensaje.style.display = 'block'; // Muestra el mensaje de éxito
-                        formulario.reset(); // Limpia las casillas
-                        campos.forEach(campo => campo.style.border = ''); // Reinicia los bordes
-                    } else {
-                        alert('Su mensaje se envio correctamente');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Su mensaje se envio correctamente');
-                });
-            } else {
-                mensaje.style.display = 'none'; // Oculta el mensaje si la validación falla
-            }
-        });
-    }
-  });
-</script>
-
+      }
+    });
+  </script>
   <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    // Mostrar mensaje si el formulario se envió con éxito
-    if (window.location.hash === "#gracias") {
-      const mensaje = document.getElementById("mensaje-enviado");
-      if (mensaje) {
-        mensaje.style.display = "block";
-      }
-
-      // Limpiar los campos del formulario si existe
-      const formulario = document.getElementById("formulario");
-      if (formulario) {
-        formulario.reset();
-      }
-
-      // Opcional: quitar el hash de la URL para evitar mostrar el mensaje otra vez si recargan
-      history.replaceState(null, null, window.location.pathname);
-    }
-  });
-</script>
+    // ---------- ANIMACIÓN DE CARGA ----------
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      loader.style.display = 'none';
+    });  
+  </script>
 </body>
 </html>
