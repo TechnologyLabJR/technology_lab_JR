@@ -612,7 +612,6 @@ form button:hover {
     }
   </script>
   
-
     <script>
   document.addEventListener("DOMContentLoaded", function () {
     const formulario = document.getElementById("formulario");
@@ -635,7 +634,7 @@ form button:hover {
         });
 
             if (formularioValido) {
-                // Envío del formulario a GetForm
+                // Envío del formulario a Formspree
                 fetch(formulario.action, {
                     method: formulario.method,
                     body: new FormData(formulario) // Envía los datos al servidor
@@ -660,6 +659,28 @@ form button:hover {
         });
     }
   });
+  
+  <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    // Mostrar mensaje si el formulario se envió con éxito
+    if (window.location.hash === "#gracias") {
+      const mensaje = document.getElementById("mensaje-enviado");
+      if (mensaje) {
+        mensaje.style.display = "block";
+      }
+
+      // Limpiar los campos del formulario si existe
+      const formulario = document.getElementById("formulario");
+      if (formulario) {
+        formulario.reset();
+      }
+
+      // Opcional: quitar el hash de la URL para evitar mostrar el mensaje otra vez si recargan
+      history.replaceState(null, null, window.location.pathname);
+    }
+  });
+</script>
+
 </script>
 </body>
 </html>
