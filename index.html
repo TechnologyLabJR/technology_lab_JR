@@ -647,37 +647,6 @@ form button:hover {
                 campos.forEach((campo) => (campo.style.border = ""));
               } else {
                 alert("SU MENSAJE FUE ENVIADO EXITOSAMENTE");
-                mensaje.classList.add("mostrar");
-                setTimeout(() => mensaje.classList.remove("mostrar"), 3000);
-                formulario.reset();
-                campos.forEach((campo) => (campo.style.border = ""));
-                mensaje.style.display = "block";
-                mensaje.style.opacity = "1";
-                mensaje.textContent = "Mensaje enviado exitosamente.";
-                mensaje.style.color = "green";
-                mensaje.style.fontSize = "1.2em";
-                mensaje.style.fontWeight = "bold";
-                mensaje.style.textAlign = "center";
-                mensaje.style.transition = "opacity 0.5s ease";
-                mensaje.style.backgroundColor = "#d4edda";
-                mensaje.style.padding = "10px";
-                mensaje.style.borderRadius = "5px";
-                mensaje.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-                mensaje.style.marginTop = "20px";
-                mensaje.style.width = "100%";
-                mensaje.style.maxWidth = "400px";
-                mensaje.style.position = "fixed";
-                mensaje.style.top = "50%";
-                mensaje.style.left = "50%";
-                mensaje.style.transform = "translate(-50%, -50%)";
-                mensaje.style.zIndex = "9999";
-                mensaje.style.display = "block";
-                mensaje.style.opacity = "1";
-                mensaje.style.transition = "opacity 0.5s ease";
-                mensaje.style.backgroundColor = "#d4edda";
-                mensaje.style.padding = "10px";
-                mensaje.style.borderRadius = "5px";
-                mensaje.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
               }
             })
             .catch((error) => {
