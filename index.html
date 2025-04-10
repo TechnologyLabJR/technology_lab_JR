@@ -634,29 +634,30 @@ form button:hover {
           }
         });
 
-        if (formularioValido) {
-          fetch(formulario.action, {
-            method: formulario.method,
-            body: new FormData(formulario),
-          })
-            .then((response) => {
-              if (response.ok) {
-                mensaje.classList.add("mostrar");
-                setTimeout(() => mensaje.classList.remove("mostrar"), 3000);
-                formulario.reset();
-                campos.forEach((campo) => (campo.style.border = ""));
-              } else {
-                alert("SU MENSAJE FUE ENVIADO EXITOSAMENTE");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-              alert("Ocurrió un problema al enviar el formulario.");
-            });
-        } else {
-          mensaje.style.display = "none";
-        }
-      });
+            if (formularioValido) {
+                // Envío del formulario a GetForm
+                fetch(formulario.action, {
+                    method: formulario.method,
+                    body: new FormData(formulario) // Envía los datos al servidor
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Acción tras envío exitoso
+                        mensaje.style.display = 'block'; // Muestra el mensaje de éxito
+                        formulario.reset(); // Limpia las casillas
+                        campos.forEach(campo => campo.style.border = ''); // Reinicia los bordes
+                    } else {
+                        alert('Su mensaje se envio correctamente');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Su mensaje se envio correctamente');
+                });
+            } else {
+                mensaje.style.display = 'none'; // Oculta el mensaje si la validación falla
+            }
+        });
     }
   });
 </script>
