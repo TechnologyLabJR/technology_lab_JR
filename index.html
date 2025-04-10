@@ -502,7 +502,7 @@ form button:hover {
 
   <section id="contacto" class="section contacto">
     <h2>Contáctanos</h2>
-    <form action="https://formsubmit.co/18a58e34c2ea3e17f4c77b27b4136228" method="POST" id="formulario">
+    <form action="https://formspree.io/f/xldjaekp" method="POST" id="formulario">
       <input type="text" name="nombre" placeholder="Tu nombre" required>
       <input type="text" name="telefono" placeholder="Tu número de teléfono" required>
       <input type="text" name="asunto" placeholder="Asunto" required>
@@ -540,39 +540,6 @@ form button:hover {
   <footer>
     <p>&copy; 2025 Technology Lab JR. Todos los derechos reservados.</p>
   </footer>
-
-  <script>
-    formulario = document.getElementById('formulario ');
-     mensaje = document.getElementById('mensaje-enviado');
-  
-    if (formulario && mensaje) {
-      formulario.addEventListener('submit', function(e) {
-        e.preventDefault();
-  
-        const campos = formulario.querySelectorAll('input, textarea');
-        let formularioValido = true;
-  
-        campos.forEach(campo => {
-          if (!campo.value.trim()) {
-            campo.style.border = '2px solid red';
-            formularioValido = false;
-          } else {
-            campo.style.border = '2px solid green';
-          }
-        });
-  
-        if (formularioValido) {
-          setTimeout(() => {
-            mensaje.style.display = 'block';
-            formulario.reset();
-            campos.forEach(campo => campo.style.border = '');
-          }, 500);
-        } else {
-          mensaje.style.display = 'none';
-        }
-      });
-    }
-  </script>
 
   <script>
     // ---------- MODO CLARO/OSCURO ----------
@@ -645,66 +612,53 @@ form button:hover {
     }
   </script>
   
-  <script>
-    // Obtención de elementos del DOM
-    formulario = document.getElementById('formulario');
-    mensaje = document.getElementById('mensaje-enviado');
 
-    // Validación y manejo del formulario
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const formulario = document.getElementById("formulario");
+    const mensaje = document.getElementById("mensaje-enviado");
+
     if (formulario && mensaje) {
-        formulario.addEventListener('submit', function(e) {
-            e.preventDefault(); // Previene el envío por defecto temporalmente
+      formulario.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-            const campos = formulario.querySelectorAll('input, textarea');
-            let formularioValido = true;
+        const campos = formulario.querySelectorAll("input, textarea");
+        let formularioValido = true;
 
-            // Validación de los campos
-            campos.forEach(campo => {
-                if (!campo.value.trim()) {
-                    campo.style.border = '2px solid red'; // Marca los campos no válidos
-                    formularioValido = false;
-                } else {
-                    campo.style.border = '2px solid green'; // Marca los campos válidos
-                }
-            });
-
-            if (formularioValido) {
-<<<<<<< HEAD
-                // Envío del formulario a GetForm
-                fetch(formulario.action, {
-                    method: formulario.method,
-                    body: new FormData(formulario) // Envía los datos al servidor
-=======
-                // Envío del formulario a Formspree
-                mensaje.classList.add('mostrar'); // Muestra el mensaje de éxito
-                setTimeout(() => {
-                    mensaje.classList.remove('mostrar'); // Oculta el mensaje después de 3 segundos
-                }, 3000);
-                // Envío de datos al servidor
-                fetch(formulario.action, {
-                    method: formulario.method,
-                    body: new FormData(formulario)
->>>>>>> 28c32ab (Sexta version de la pagina)
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Acción tras envío exitoso
-                        mensaje.style.display = 'block'; // Muestra el mensaje de éxito
-                        formulario.reset(); // Limpia las casillas
-                        campos.forEach(campo => campo.style.border = ''); // Reinicia los bordes
-                    } else {
-                        alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un problema con el envío del formulario.');
-                });
-            } else {
-                mensaje.style.display = 'none'; // Oculta el mensaje si la validación falla
-            }
+        campos.forEach((campo) => {
+          if (!campo.value.trim()) {
+            campo.style.border = "2px solid red";
+            formularioValido = false;
+          } else {
+            campo.style.border = "2px solid green";
+          }
         });
+
+        if (formularioValido) {
+          fetch(formulario.action, {
+            method: formulario.method,
+            body: new FormData(formulario),
+          })
+            .then((response) => {
+              if (response.ok) {
+                mensaje.classList.add("mostrar");
+                setTimeout(() => mensaje.classList.remove("mostrar"), 3000);
+                formulario.reset();
+                campos.forEach((campo) => (campo.style.border = ""));
+              } else {
+                alert("Hubo un error al enviar el mensaje.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Ocurrió un problema al enviar el formulario.");
+            });
+        } else {
+          mensaje.style.display = "none";
+        }
+      });
     }
+  });
 </script>
 </body>
 </html>
