@@ -641,10 +641,10 @@ form button:hover {
             .then(response => {
               if (response.ok) {
                 mensaje.style.display = 'block';
-  
-                formulario.reset(); // ✅ Limpiar campos
-                campos.forEach(campo => campo.style.border = ''); // ✅ Resetear bordes
-  
+                formulario.reset(); // Limpiar campos
+                campos.forEach(campo =>
+                campo.removeAttribute("style")); // Remover estilos de error
+              });
                 setTimeout(() => {
                   mensaje.style.display = 'none';
                 }, 5000);
@@ -658,9 +658,7 @@ form button:hover {
           } else {
             mensaje.style.display = 'none';
           }
-        });
-      }
-    });
+
   </script>
   <script>
     // ---------- ANIMACIÓN DE CARGA ----------
