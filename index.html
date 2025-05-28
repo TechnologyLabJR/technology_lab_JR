@@ -431,6 +431,15 @@ form button:hover {
 .hamburger.active .bar:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+
+.mapa-contenedor {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto; /* Centrado horizontal */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
   </style>
 </head>
 <body>
@@ -530,9 +539,25 @@ form button:hover {
       <a href="https://instagram.com/technologylabjr" target="_blank">Instagram</a>
       <a href="https://tiktok.com/@technologylabjr" target="_blank">TikTok</a>
     </div>
+  </section> 
+  
+  <section class="section mapa" id="ubicacion">
+    <h2>¿Dónde estamos?</h2>
+    <p>Visítanos en nuestra sede en Barranquilla:</p>
+  
+    <div style="max-width:100%; overflow:hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-top: 20px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.84422883980622!2d-74.79766853415067!3d10.924972239318647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef5d3adfafc6063%3A0x81ba9439993673a3!2sTechnology%20Lab%20JR!5e0!3m2!1ses-419!2sco!4v1748469290005!5m2!1ses-419!2sco"
+        width="100%" 
+        height="300" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
   </section>
   
-
   <a href="https://wa.me/573215781968" class="whatsapp" target="_blank">💬 Escríbenos</a>
 
   <button class="modo-btn" id="modo-toggle" onclick="toggleModo()">🌞</button>
@@ -644,7 +669,6 @@ form button:hover {
                 formulario.reset(); // Limpiar campos
                 campos.forEach(campo =>
                 campo.removeAttribute("style")); // Remover estilos de error
-              });
                 setTimeout(() => {
                   mensaje.style.display = 'none';
                 }, 5000);
@@ -658,7 +682,9 @@ form button:hover {
           } else {
             mensaje.style.display = 'none';
           }
-
+        });
+      }
+    });
   </script>
   <script>
     // ---------- ANIMACIÓN DE CARGA ----------
