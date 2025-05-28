@@ -98,22 +98,26 @@ body.dark-mode .redes-sociales a:hover {
     }
     .logo-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   padding: 10px 20px;
-  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .logo-text {
-  text-align: center;
   flex: 1;
+  text-align: left;
 }
 
 .logo-img {
-  margin-left: auto;
+  margin-left: 32px; /* Ajusta el espacio si lo deseas */
+  display: flex;
+  align-items: center;
 }
 
 .logo-img img {
-  max-height: 100px;
+  max-height: 200px;
   width: auto;
 }
  .logo-text h1 {
@@ -123,8 +127,8 @@ body.dark-mode .redes-sociales a:hover {
     }
 
     .logo-text span {
-      font-size: 15px;
-      color: #ccc;
+      font-size: 20px;
+      color: #ffffff;
     }
 
     .menu-toggle {
@@ -356,61 +360,16 @@ form button:hover {
   }
 
   .logo-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-
-  .logo-text h1 {
-    font-size: 18px;
-  }
-
-  .logo-text span {
-    font-size: 12px;
-  }
-
-  .hamburger {
-    top: 10px;
-    left: 10px;
-  }
-
-  .section {
-    padding: 20px 10px;
-  }
-
-  form {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .trabajo img {
-    max-width: 100%;
-  }
-
-  .modo-btn {
-    top: 90px;
-    right: 15px;
-  }
-
-  .whatsapp {
-    bottom: 80px;
-    right: 15px;
-  }
-}
-
-@media (min-width: 481px) {
-  .logo-container {
     flex-direction: row;
-    align-items: center;      /* Centra verticalmente */
+    align-items: center;
     justify-content: flex-start;
   }
   .logo-text {
     text-align: left;
-    margin-right: 600px;       /* Espacio entre texto y logo */
+    margin-right: 0;
   }
   .logo-img {
-    margin-left: 40px;        /* Espacio razonable */
+    margin-left: auto;
   }
 }
 
@@ -467,7 +426,7 @@ form button:hover {
   <header>
     <div class="logo-container">
       <div class="logo-text">
-        <h1>Technology Lab JR</h1>
+        <h1>Technology<br>Lab JR</h1>
         <span>Soluciones en mantenimiento, reparación y periféricos de equipos de computo</span>
       </div>
       <div class="logo-img">
@@ -612,45 +571,47 @@ form button:hover {
   </script>
   
   <script>
-    // ---------- BOTÓN HAMBURGUESA / SIDEBAR ----------
-    const sidebar = document.getElementById('sidebar');
-    const toggle = document.getElementById('menu-toggle');
-  
-    function toggleSidebar() {
-      const isOpen = sidebar.style.width !== '0px' && sidebar.style.width !== '';
-  
-      if (isOpen) {
-        closeSidebar();
-      } else {
-        sidebar.style.width = '250px';
-        sidebar.style.padding = '20px';
-        toggle.classList.add('active');
-  
-        setTimeout(() => {
-          document.addEventListener('click', outsideClickHandler);
-        }, 10);
-      }
-  
-      const links = sidebar.querySelectorAll('a');
-      links.forEach(link => {
-        link.addEventListener('click', closeSidebar);
-      });
-    }
-  
-    function closeSidebar() {
-      sidebar.style.width = '0';
-      sidebar.style.padding = '0';
-      toggle.classList.remove('active');
-  
-      document.removeEventListener('click', outsideClickHandler);
-    }
-  
-    function outsideClickHandler(e) {
-      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
-        closeSidebar();
-      }
-    }
-  </script>
+// ---------- BOTÓN HAMBURGUESA / SIDEBAR ----------
+const sidebar = document.getElementById('sidebar');
+const toggle = document.getElementById('menu-toggle');
+
+function toggleSidebar() {
+  sidebar.classList.toggle('active');
+  toggle.classList.toggle('active');
+
+  if (sidebar.classList.contains('active')) {
+    setTimeout(() => {
+      document.addEventListener('click', outsideClickHandler);
+    }, 10);
+  } else {
+    document.removeEventListener('click', outsideClickHandler);
+  }
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('active');
+  toggle.classList.remove('active');
+  document.removeEventListener('click', outsideClickHandler);
+}
+
+function outsideClickHandler(e) {
+  if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
+    closeSidebar();
+  }
+}
+
+// Cierra el sidebar al hacer scroll
+window.addEventListener('scroll', () => {
+  if (sidebar.classList.contains('active')) {
+    closeSidebar();
+  }
+});
+
+// Cierra el sidebar al hacer clic en un enlace
+document.querySelectorAll('.sidebar a').forEach(link => {
+  link.addEventListener('click', closeSidebar);
+});
+</script>
   
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -708,5 +669,18 @@ form button:hover {
       loader.style.display = 'none';
     });  
   </script>
+  <script>
+// Cierra el sidebar al hacer scroll
+window.addEventListener('scroll', () => {
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('menu-toggle');
+  if (sidebar && sidebar.classList.contains('active')) {
+    sidebar.classList.remove('active');
+    sidebar.style.width = '0';
+    sidebar.style.padding = '0';
+    toggle.classList.remove('active');
+  }
+});
+</script>
 </body>
 </html>
