@@ -86,7 +86,7 @@ body.dark-mode .redes-sociales a:hover {
       background-color: var(--fondo);
       color: var(--texto);
       transition: background-color 0.3s, color 0.3s;
-      font-size: 18px; /* Cambia este valor para el tamaño base */
+      font-size: 22px; /* Cambia este valor para el tamaño base */
     }
 
     header {
@@ -744,10 +744,10 @@ document.querySelectorAll('.sidebar a').forEach(link => {
       if (formulario && mensaje) {
         formulario.addEventListener("submit", function(e) {
           e.preventDefault();
-  
+
           const campos = formulario.querySelectorAll("input, textarea");
           let formularioValido = true;
-  
+
           campos.forEach(campo => {
             if (!campo.value.trim()) {
               campo.style.border = "2px solid red";
@@ -756,26 +756,30 @@ document.querySelectorAll('.sidebar a').forEach(link => {
               campo.style.border = "2px solid green";
             }
           });
-  
+
           if (formularioValido) {
             fetch(formulario.action, {
               method: "POST",
               body: new FormData(formulario)
             })
             .then(response => {
-              if (response.ok) {
+              // Mostrar mensaje de éxito si la respuesta está en el rango 200-299 o 302
+              if (response.ok || response.status === 302) {
                 mensaje.style.display = 'block';
-                formulario.reset(); // Limpiar campos
-                campos.forEach(campo => campo.removeAttribute("style")); // Remover estilos de error
+                mensaje.textContent = '¡Mensaje enviado con éxito!';
+                formulario.reset();
+                campos.forEach(campo => campo.removeAttribute("style"));
                 setTimeout(() => {
                   mensaje.style.display = 'none';
                 }, 5000);
               } else {
-                alert('Hubo un error al enviar el mensaje.');
+                mensaje.style.display = 'block';
+                mensaje.textContent = 'Hubo un error al enviar el mensaje.';
               }
             })
             .catch(error => {
-              alert('Ocurrió un problema: ' + error.message);
+              mensaje.style.display = 'block';
+              mensaje.textContent = 'Ocurrió un problema: ' + error.message;
             });
           } else {
             mensaje.style.display = 'none';
