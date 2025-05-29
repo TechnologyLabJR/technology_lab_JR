@@ -143,45 +143,47 @@ body.dark-mode .redes-sociales a:hover {
 
    .sidebar {
   position: fixed;
-  top: 70;
+  top: 0;              /* Pegado arriba */
   left: 0;
-  width: 0;
-  height: calc(100% - 70px);
-  background: linear-gradient(135deg, var(--fondo-header), #0e1b3a); /* degradado elegante */
-  color: white;
+  height: 100vh;       /* Ocupa toda la altura de la ventana */
+  width: 260px;        /* O el ancho que uses */
+  background: linear-gradient(160deg, #0033cc 60%, #0055ff 100%);
+  z-index: 1000;
+  overflow-y: auto;    /* Permite scroll dentro del menú */
+  transition: transform 0.3s;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+  padding: 30px 20px;
+  transform: translateX(-100%);
+}
+
+/* Cuando el menú está activo (visible) */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar ul {
+  list-style: none;
   padding: 0;
-  overflow: hidden;
-  transition: width 0.4s ease, padding 0.3s ease;
-  z-index: 9998;
+  margin: 50px 0 0 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4); /* sombra para darle profundidad */
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  gap: 12px;
 }
-.sidebar a {
-  padding: 12px 20px;
-  display: block;
-  width: 100%;
-  color: white;
+
+.sidebar ul li a {
+  color: #fff;
   text-decoration: none;
-  transition: background 0.3s;
-}
-.sidebar a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-
-/* Cuando se activa */
-.sidebar.active {
-  width: 260px;
-  padding: 30px 20px;
+  font-family: 'Rajdhani', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 4px 0;
+  transition: color 0.2s;
 }
 
-
+.sidebar ul li a:hover {
+  color: #ffd700;
+}
 
     .sidebar a {
       color: white;
@@ -473,13 +475,16 @@ form button:hover {
   </div>
 </header>
 
-  <nav id="sidebar" class="sidebar">
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#trabajos">Trabajos realizados</a>
-    <a href="#contacto">Contacto</a>
-    <a href="#redes">Redes Sociales</a>
-  </nav>
+  <nav class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#trabajos">Trabajos realizados</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#redes">Redes Sociales</a></li>
+    <li><a href="#ubicacion">Nuestra Ubicación</a></li>
+  </ul>
+</nav>
 
   <section id="inicio" class="section"
   >
