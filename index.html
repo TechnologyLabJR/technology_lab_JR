@@ -588,7 +588,7 @@ form button:hover {
 
   <section id="contacto" class="section contacto">
     <h2>Contáctanos</h2>
-    <form action="https://formspree.io/f/xldjaekp" method="POST" id="formulario">
+    <form id="formulario" action="https://formspree.io/f/xldjaekp" method="POST">
       <input type="text" name="nombre" placeholder="Tu nombre" required>
       <input type="text" name="telefono" placeholder="Tu número de teléfono" required>
       <input type="text" name="asunto" placeholder="Asunto" required>
@@ -596,11 +596,12 @@ form button:hover {
       <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_redirect" value="">
 
       <button type="submit">Enviar</button>
     </form>
     
-    <p id="mensaje-enviado" style="display:none; color: green;">Mensaje enviado exitosamente.</p>
+    <div id="mensaje" style="display:none; color: green; margin-top: 10px;"></div>
 
     <p><strong>¡Estamos aquí para ayudarte!</strong></p>
 
@@ -738,55 +739,36 @@ document.querySelectorAll('.sidebar a').forEach(link => {
   
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const formulario = document.getElementById("formulario");
-      const mensaje = document.getElementById("mensaje-enviado");
-  
-      if (formulario && mensaje) {
-        formulario.addEventListener("submit", function(e) {
-          e.preventDefault();
+  const formulario = document.getElementById("formulario");
+  const mensaje = document.getElementById("mensaje");
 
-          const campos = formulario.querySelectorAll("input, textarea");
-          let formularioValido = true;
+  formulario.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-          campos.forEach(campo => {
-            if (!campo.value.trim()) {
-              campo.style.border = "2px solid red";
-              formularioValido = false;
-            } else {
-              campo.style.border = "2px solid green";
-            }
-          });
-
-          if (formularioValido) {
-            fetch(formulario.action, {
-              method: "POST",
-              body: new FormData(formulario)
-            })
-            .then(response => {
-              // Mostrar mensaje de éxito si la respuesta está en el rango 200-299 o 302
-              if (response.ok || response.status === 302) {
-                mensaje.style.display = 'block';
-                mensaje.textContent = '¡Mensaje enviado con éxito!';
-                formulario.reset();
-                campos.forEach(campo => campo.removeAttribute("style"));
-                setTimeout(() => {
-                  mensaje.style.display = 'none';
-                }, 5000);
-              } else {
-                mensaje.style.display = 'block';
-                mensaje.textContent = 'Hubo un error al enviar el mensaje.';
-              }
-            })
-            .catch(error => {
-              mensaje.style.display = 'block';
-              mensaje.textContent = 'Ocurrió un problema: ' + error.message;
-            });
-          } else {
-            mensaje.style.display = 'none';
-          }
-        });
+    fetch(formulario.action, {
+      method: "POST",
+      body: new FormData(formulario),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        mensaje.style.display = 'block';
+        mensaje.textContent = '¡Mensaje enviado con éxito!';
+        setTimeout(() => {
+          mensaje.style.display = 'none';
+          formulario.reset();
+        }, 2000); // El mensaje se muestra 2 segundos, luego se oculta y se resetea el formulario
+      } else {
+        mensaje.style.display = 'block';
+        mensaje.textContent = 'Hubo un error al enviar el mensaje.';
       }
+    })
+    .catch(error => {
+      mensaje.style.display = 'block';
+      mensaje.textContent = 'Ocurrió un problema: ' + error.message;
     });
+  });
+});
   </script>
   <script>
     // ---------- ANIMACIÓN DE CARGA ----------
