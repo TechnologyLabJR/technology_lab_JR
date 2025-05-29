@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Technology Lab JR</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani:700&display=swap" rel="stylesheet">
+
   <style>
     #mensaje-enviado {
       display: none;
@@ -20,7 +22,7 @@
       --fondo: #ffffff;
       --texto: #000000;
       --enlace: #0066cc;
-      --fondo-header: #0033cc;
+      --fondo-header: #0052bd;
       --boton-redes: #0033cc;
       --boton-redes-hover: #001f99;
       --texto-redes: #ffffff;
@@ -34,7 +36,7 @@
   --fondo: #121212;
   --texto: #f0f0f0;
   --enlace: #00ffff;
-  --fondo-header: #001f99;
+  --fondo-header: #0052bd;
   --boton-redes: #0033cc;
   --boton-redes-hover: #001f99;
   --texto-redes: #ffffff;
@@ -46,7 +48,6 @@ body.dark-mode header {
   background-color: var(--fondo-header);
 }
 
-body.dark-mode .logo-text h1,
 body.dark-mode .logo-text span {
   color: var(--texto-redes);
 }
@@ -98,39 +99,40 @@ body.dark-mode .redes-sociales a:hover {
     }
     .logo-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
+  justify-content: center;
+  padding: 18px 0;
   width: 100%;
   box-sizing: border-box;
 }
 
-.logo-text {
-  flex: 1;
-  text-align: left;
-}
-
 .logo-img {
-  margin-left: 32px; /* Ajusta el espacio si lo deseas */
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
 .logo-img img {
-  max-height: 200px;
+  max-height: 150px;
   width: auto;
+  display: block;
+  margin: 0 auto;
 }
- .logo-text h1 {
-      font-size: 30px;
-      margin: 0;
-      color: white;
-    }
 
-    .logo-text span {
-      font-size: 20px;
-      color: #ffffff;
-    }
+.logo-text {
+  text-align: center;
+  margin-top: 10px;
+}
 
+.logo-text span {
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  font-weight: bold;
+  font-family: 'Rajdhani', Arial, sans-serif;
+}
     .menu-toggle {
       font-size: 28px;
       background: none;
@@ -371,6 +373,12 @@ form button:hover {
   .logo-img {
     margin-left: auto;
   }
+  .logo-img img {
+    max-height: 70px;
+  }
+  .logo-text span {
+    font-size: 14px;
+  }
 }
 
     .texto-centrado {
@@ -424,17 +432,15 @@ form button:hover {
   </div>
   
   <header>
-    <div class="logo-container">
-      <div class="logo-text">
-        <h1>Technology<br>Lab JR</h1>
-        <span>Soluciones en mantenimiento, reparación y periféricos de equipos de computo</span>
-      </div>
-      <div class="logo-img">
-        <img src="logo.png" alt="Logo Technology Lab JR">
-      </div>
+  <div class="logo-container">
+    <div class="logo-img">
+      <img src="logo.png" alt="Logo Technology Lab JR" />
     </div>
-    
-      </header>
+    <div class="logo-text">
+      <span>Soporte Técnico y Mantenimiento de Equipos</span>
+    </div>
+  </div>
+</header>
 
   <nav id="sidebar" class="sidebar">
     <a href="#inicio">Inicio</a>
@@ -635,52 +641,52 @@ document.querySelectorAll('.sidebar a').forEach(link => {
           });
   
           if (formularioValido) {
-            fetch(formulario.action, {
-              method: formulario.method,
+            fetch(formulario.action, {body: new FormData(formulario)
               body: new FormData(formulario)
             })
             .then(response => {
               if (response.ok) {
-                mensaje.style.display = 'block';
+                mensaje.style.display = 'block';Limpiar campos
                 formulario.reset(); // Limpiar campos
-                campos.forEach(campo =>
+                campos.forEach(campo =>ute("style")); // Remover estilos de error
                 campo.removeAttribute("style")); // Remover estilos de error
-                setTimeout(() => {
-                  mensaje.style.display = 'none';
+                setTimeout(() => {.style.display = 'none';
+                  mensaje.style.display = 'none';0);
                 }, 5000);
-              } else {
-                alert('Hubo un error al enviar el mensaje.');
+              } else { alert('Hubo un error al enviar el mensaje.');
+                alert('Hubo un error al enviar el mensaje.');}
               }
             })
-            .catch(error => {
+            .catch(error => {lert('Ocurrió un problema: ' + error.message);
               alert('Ocurrió un problema: ' + error.message);
             });
-          } else {
+          } else { mensaje.style.display = 'none';
             mensaje.style.display = 'none';
-          }
+          } });
         });
       }
-    });
+    });>
   </script>
-  <script>
+  <script>----
     // ---------- ANIMACIÓN DE CARGA ----------
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {mentById('loader');
+      const loader = document.getElementById('loader');der.style.display = 'none';
       loader.style.display = 'none';
-    });  
+    });  >
   </script>
   <script>
 // Cierra el sidebar al hacer scroll
 window.addEventListener('scroll', () => {
   const sidebar = document.getElementById('sidebar');
-  const toggle = document.getElementById('menu-toggle');
-  if (sidebar && sidebar.classList.contains('active')) {
+  const toggle = document.getElementById('menu-toggle');ains('active')) {
+  if (sidebar && sidebar.classList.contains('active')) {active');
     sidebar.classList.remove('active');
     sidebar.style.width = '0';
-    sidebar.style.padding = '0';
+    sidebar.style.padding = '0'; toggle.classList.remove('active');
     toggle.classList.remove('active');
   }
-});
+});t>
 </script>
-</body>
-</html>
+
+
+</html></body></html>
