@@ -155,6 +155,9 @@ body.dark-mode .redes-sociales a:hover {
   box-shadow: 2px 0 12px rgba(0,0,0,0.18);
   padding: 30px 20px;
   transform: translateX(-100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Cuando el menú está activo (visible) */
@@ -165,7 +168,7 @@ body.dark-mode .redes-sociales a:hover {
 .sidebar ul {
   list-style: none;
   padding: 0;
-  margin: 50px 0 0 0;
+  margin: 60px 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -402,12 +405,15 @@ form button:hover {
   text-align: justify;
 }
 .hamburger {
-  display: block;
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  position: fixed;      /* Flotante en toda la página */
+  top: 22px;            /* Distancia desde arriba */
+  left: 22px;           /* Distancia desde la izquierda */
+  z-index: 1100;        /* Encima de otros elementos */
   cursor: pointer;
-  z-index: 10000; /* Este valor lo pone por encima de todo */
+  background: rgba(0,0,0,0.12); /* Opcional: fondo semitransparente */
+  border-radius: 8px;   /* Opcional: bordes redondeados */
+  padding: 8px;         /* Opcional: espacio interno */
+  transition: opacity 0.3s, background 0.3s;
 }
 .hamburger .bar {
   width: 30px;
@@ -455,6 +461,34 @@ form button:hover {
   animation: latido 5.5s infinite;
 }
 
+    .sidebar-redes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 65px;
+  margin-top: 24px;
+}
+
+.sidebar-redes a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #222;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  text-decoration: none;
+}
+
+.sidebar-redes a:hover {
+  background: #444;
+}
+
+.sidebar-redes svg {
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -484,6 +518,31 @@ form button:hover {
     <li><a href="#redes">Redes Sociales</a></li>
     <li><a href="#ubicacion">Nuestra Ubicación</a></li>
   </ul>
+  <div class="sidebar-redes">
+    <a href="https://facebook.com/tuusuario" target="_blank" aria-label="Facebook">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="16" fill="#1877F3"/>
+        <path d="M20.5 16h-2.5v8h-3v-8h-2v-2.5h2v-1.5c0-2.07 1.01-3.5 3.5-3.5h2.5v2.5h-2c-.47 0-.5.18-.5.5v1.5h2.5l-.5 2.5z" fill="#fff"/>
+      </svg>
+    </a>
+    <a href="https://instagram.com/tuusuario" target="_blank" aria-label="Instagram">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect x="6" y="6" width="20" height="20" rx="6" fill="#fff"/>
+        <rect x="8" y="8" width="16" height="16" rx="5" fill="#E1306C"/>
+        <circle cx="16" cy="16" r="5" fill="#fff"/>
+        <circle cx="16" cy="16" r="3.5" fill="#E1306C"/>
+        <circle cx="21" cy="11" r="1.2" fill="#fff"/>
+      </svg>
+    </a>
+    <a href="https://tiktok.com/@tuusuario" target="_blank" aria-label="TikTok">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="16" fill="#000"/>
+        <path d="M22.5 14.5c-1.38 0-2.5-1.12-2.5-2.5V9.5h-2v9a2 2 0 1 1-2-2v-2a4 4 0 1 0 4 4v-4.5c.73.46 1.6.73 2.5.73v-2.23z" fill="#fff"/>
+        <path d="M20.5 9.5v2.5c0 1.38 1.12 2.5 2.5 2.5v-1.5c-.73 0-1.32-.59-1.32-1.32V9.5h-1.18z" fill="#25F4EE"/>
+        <path d="M16 20.5a2 2 0 0 0 2-2v-9h-1v9a1 1 0 1 1-1-1v-2a3 3 0 1 0 0 6z" fill="#FE2C55"/>
+      </svg>
+    </a>
+  </div>
 </nav>
 
   <section id="inicio" class="section"
