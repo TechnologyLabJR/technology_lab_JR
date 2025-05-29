@@ -157,7 +157,7 @@ body.dark-mode .redes-sociales a:hover {
   transform: translateX(-100%);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; /* <-- Así sí funciona el margin-top */
 }
 
 /* Cuando el menú está activo (visible) */
@@ -465,8 +465,8 @@ form button:hover {
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-bottom: 65px;
-  margin-top: 24px;
+  margin-top: 40px; /* Antes: 16px. Ahora más arriba */
+  margin-bottom: 0;
 }
 
 .sidebar-redes a {
@@ -519,13 +519,13 @@ form button:hover {
     <li><a href="#ubicacion">Nuestra Ubicación</a></li>
   </ul>
   <div class="sidebar-redes">
-    <a href="https://facebook.com/tuusuario" target="_blank" aria-label="Facebook">
+    <a href="https://www.facebook.com/profile.php?id=61564082197523" target="_blank" aria-label="Facebook">
       <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="16" r="16" fill="#1877F3"/>
         <path d="M20.5 16h-2.5v8h-3v-8h-2v-2.5h2v-1.5c0-2.07 1.01-3.5 3.5-3.5h2.5v2.5h-2c-.47 0-.5.18-.5.5v1.5h2.5l-.5 2.5z" fill="#fff"/>
       </svg>
     </a>
-    <a href="https://instagram.com/tuusuario" target="_blank" aria-label="Instagram">
+    <a href="https://instagram.com/technologylabjr/" target="_blank" aria-label="Instagram">
       <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
         <rect x="6" y="6" width="20" height="20" rx="6" fill="#fff"/>
         <rect x="8" y="8" width="16" height="16" rx="5" fill="#E1306C"/>
@@ -534,7 +534,7 @@ form button:hover {
         <circle cx="21" cy="11" r="1.2" fill="#fff"/>
       </svg>
     </a>
-    <a href="https://tiktok.com/@tuusuario" target="_blank" aria-label="TikTok">
+    <a href="https://tiktok.com/@technologylabjr" target="_blank" aria-label="TikTok">
       <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="16" r="16" fill="#000"/>
         <path d="M22.5 14.5c-1.38 0-2.5-1.12-2.5-2.5V9.5h-2v9a2 2 0 1 1-2-2v-2a4 4 0 1 0 4 4v-4.5c.73.46 1.6.73 2.5.73v-2.23z" fill="#fff"/>
@@ -728,13 +728,6 @@ function outsideClickHandler(e) {
   }
 }
 
-// Cierra el sidebar al hacer scroll
-window.addEventListener('scroll', () => {
-  if (sidebar.classList.contains('active')) {
-    closeSidebar();
-  }
-});
-
 // Cierra el sidebar al hacer clic en un enlace
 document.querySelectorAll('.sidebar a').forEach(link => {
   link.addEventListener('click', closeSidebar);
@@ -798,19 +791,5 @@ document.querySelectorAll('.sidebar a').forEach(link => {
       }
     });
   </script>
-  <script>
-// Cierra el sidebar al hacer scroll
-window.addEventListener('scroll', () => {
-  const sidebar = document.getElementById('sidebar');
-  const toggle = document.getElementById('menu-toggle');
-  if (sidebar && sidebar.classList.contains('active')) {
-    sidebar.classList.remove('active');
-    sidebar.style.width = '0';
-    sidebar.style.padding = '0';
-    toggle.classList.remove('active');
-  }
-});
-</script>
-
 
 </html></body></html>
