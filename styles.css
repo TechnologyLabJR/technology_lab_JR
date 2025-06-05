@@ -629,13 +629,19 @@ h2 {
       text-decoration: underline;
     }
     .separador {
-      width: 550px;
-      height: 5.5px;
-      background: #0033cc;
-      margin: 32px auto;
-      
+       width: 80%;
+  max-width: 400px;
+  height: 4px;
+  margin: 16px auto;
+  border-radius: 8px;
+  background: #0033cc;
+  opacity: 0.85;
     }
-    @media (max-width: 900px) {
+    body.dark-mode .separador {
+      background: #66b3ff !important;
+    }
+
+    @media (max-width: 600px) {
       .contenedor {
         margin: 24px 8px;
         padding: 18px 6px;
@@ -645,10 +651,13 @@ h2 {
       flex: 1;
     }
     .vertical-sep {
-      width: 2px;
+      width: 5px;
       background: #0033cc;
-      margin: 0 16px;
+      margin: 0 18px;
     }
+    body.dark-mode .vertical-sep {
+  background: linear-gradient(90deg, #66b3ff 0%, #0033cc 100%);
+}
     .valores li, .principios li {
       transition: transform 0.2s, color 0.2s;
     }
