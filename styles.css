@@ -201,38 +201,43 @@ body.dark-mode .sidebar a:hover {
     }
 
     .trabajos {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
 
-    .trabajo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.trabajo {
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 16px;
   text-align: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.trabajo:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  transform: translateY(-6px) scale(1.03);
+  cursor: pointer;
+}
+
+body.dark-mode .trabajo {
+  background: #181818;
+  color: #f2f2f2;
 }
 
 .trabajo img {
   width: 100%;
-  max-width: 300px;
-  border: none;
-  border-radius: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombra sutil */
+  max-width: 220px;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
-    .trabajo img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .trabajo p {
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-top: 10px;
-    }
+body.dark-mode .trabajo {
+  background: #181818;
+  color: #f2f2f2;
+}
 
     form {
       display: flex;
@@ -585,6 +590,9 @@ form button:hover {
   }
   .valores, .principios {
     margin-bottom: 24px;
+  }
+  .trabajos {
+    grid-template-columns: 1fr;
   }
 }
  .contenedor {
