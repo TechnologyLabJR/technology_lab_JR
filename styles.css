@@ -504,15 +504,21 @@ form button:hover {
   margin-top: 10px;
   display: none;       /* Ya lo tienes para ocultar por defecto */
 }
-.separador {
-  width: 80px;
-  height: 4px;
-  background: #ffd700; /* Amarillo dorado */
-  margin: 32px auto 32px auto;
-  border-radius: 2px;
-  border: none;
-}
 
+.separador-corto {
+  width: 1000px;
+  height: 8px;
+  margin: 0px auto 0px auto;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #0033cc 0%, #66b3ff 100%);
+  opacity: 0.85;
+}
+body.dark-mode .separador-corto {
+  background: linear-gradient(90deg, #66b3ff 0%, #0033cc 100%);
+}
+h2 {
+  margin-top: 0px;
+}
 .valores-principios {
   display: flex;
   flex-direction: row;
@@ -623,10 +629,11 @@ form button:hover {
       text-decoration: underline;
     }
     .separador {
-      width: 100%;
-      height: 2px;
+      width: 550px;
+      height: 5.5px;
       background: #0033cc;
-      margin: 16px 0;
+      margin: 32px auto;
+      
     }
     @media (max-width: 900px) {
       .contenedor {
