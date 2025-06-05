@@ -517,7 +517,7 @@ body.dark-mode .separador-corto {
   background: linear-gradient(90deg, #66b3ff 0%, #0033cc 100%);
 }
 h2 {
-  margin-top: 0px;
+  margin-top: 1px;
 }
 .valores-principios {
   display: flex;
