@@ -828,7 +828,7 @@ footer {
   }
   .section-servicios li {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 16px;
     justify-content: flex-start;
