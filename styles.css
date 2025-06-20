@@ -816,21 +816,27 @@ footer {
 
 /* Tamaño de iconos */
 .section-servicios i {
-  font-size: 2em;
+  font-size: 2.2em;
 }
 
-/* Responsive: una columna y iconos más pequeños en móvil */
-@media (max-width: 600px) {
+/* --- MÓVIL: columna y más espacio --- */
+@media (max-width: 700px) {
   .section-servicios ul {
     flex-direction: column;
     align-items: center;
     gap: 18px;
   }
   .section-servicios li {
-    justify-content: center;
-    font-size: 1em;
+    width: 100%;
+    max-width: 320px;
+    justify-content: flex-start;
+    gap: 18px;
+    padding: 12px 0;
+    font-size: 1.1em;
   }
   .section-servicios i {
-    font-size: 1.4em;
+    font-size: 1.5em;
+    min-width: 36px;
+    text-align: center;
   }
 }
