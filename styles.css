@@ -785,21 +785,37 @@ p {
 body {
   background: #f8f9fa;
 }
-.tarjeta-servicio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.tarjeta-servicio img {
-  margin-bottom: 16px;
-}
-.tarjeta-servicio h3, 
-.tarjeta-servicio p {
-  text-align: center;
-}
 
 .trabajo p {
   text-align: center !important;
+}
+
+.mapa p {
+  text-align: center !important;
+}
+
+footer {
+  text-align: center !important;
+}
+
+.section-servicios ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0;
+}
+
+.section-servicios li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+}
+
+.section-servicios i {
+  font-size: 2.2em;
 }
