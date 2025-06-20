@@ -363,7 +363,16 @@ form button:hover {
 }
 
     footer {
+      background: var(--fondo-header);
+      color: #fff;
       text-align: center;
+      padding: 20px 0;
+      width: 100vw;
+      margin: 0;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      transform: translateX(-50%);
     }
 
     @media (max-width: 480px) {
@@ -791,8 +800,8 @@ body {
   text-align: center !important;
 }
 
-footer {
-  text-align: center;
+footer, footer p {
+  text-align: center !important;
 }
 
 .section-servicios ul {
