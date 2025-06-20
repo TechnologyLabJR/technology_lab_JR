@@ -74,7 +74,7 @@ body.dark-mode .redes-sociales a:hover {
       background-color: var(--fondo);
       color: var(--texto);
       transition: background-color 0.3s, color 0.3s;
-      font-size: 22px; /* Cambia este valor para el tamaño base */
+      font-size: 1rem; /* o 1.1em */
     }
 
     header {
@@ -186,9 +186,9 @@ body.dark-mode .sidebar ul li a:hover,
 body.dark-mode .sidebar a:hover {
   color: #ffd700 !important;
 }
-    h1, h2, h3, p, ul {
-      text-align: center;
-      line-height: 1.8;
+    h1, h2, h3, p, li {
+      word-break: break-word;
+      white-space: normal;
     }
 
     ul {
@@ -364,9 +364,6 @@ form button:hover {
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: var(--fondo-header);
-      color: white;
     }
 
     @media (max-width: 480px) {
@@ -795,7 +792,7 @@ body {
 }
 
 footer {
-  text-align: center !important;
+  text-align: center;
 }
 
 .section-servicios ul {
