@@ -67,6 +67,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------- BOTÓN HAMBURGUESA Y SIDEBAR ----------
   const hamburger = document.getElementById('menu-toggle');
   const sidebar = document.getElementById('sidebar');
+  let isPointerInsideSidebar = false;
+
+  if (sidebar) {
+    // Detecta si el mouse está sobre el sidebar (PC)
+    sidebar.addEventListener('mouseenter', () => {
+      isPointerInsideSidebar = true;
+    });
+    sidebar.addEventListener('mouseleave', () => {
+      isPointerInsideSidebar = false;
+    });
+
+    // Detecta si el dedo está tocando el sidebar (móvil)
+    sidebar.addEventListener('touchstart', () => {
+      isPointerInsideSidebar = true;
+    });
+    sidebar.addEventListener('touchend', () => {
+      isPointerInsideSidebar = false;
+    });
+
+    // Detecta scroll en el documento
+    window.addEventListener('scroll', () => {
+      if (!isPointerInsideSidebar && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        if (hamburger) hamburger.classList.remove('active');
+      }
+    });
+  }
+
   if (hamburger && sidebar) {
     hamburger.addEventListener('click', () => {
       sidebar.classList.toggle('active');
@@ -117,5 +145,26 @@ window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
   if (loader) {
     loader.style.display = 'none';
+  }
+});
+
+// Suponiendo que tu sidebar tiene id="sidebar"
+const sidebar = document.getElementById('sidebar');
+
+let isPointerInsideSidebar = false;
+
+// Detecta si el mouse está sobre el sidebar
+sidebar.addEventListener('mouseenter', () => {
+  isPointerInsideSidebar = true;
+});
+sidebar.addEventListener('mouseleave', () => {
+  isPointerInsideSidebar = false;
+});
+
+// Detecta scroll en el documento
+window.addEventListener('scroll', () => {
+  if (!isPointerInsideSidebar) {
+    // Cierra el sidebar (ajusta según tu lógica)
+    sidebar.classList.remove('open');
   }
 });
