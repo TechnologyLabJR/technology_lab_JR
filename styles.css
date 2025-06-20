@@ -136,7 +136,7 @@ body.dark-mode .redes-sociales a:hover {
   left: 0;
   height: 100vh;       /* Ocupa toda la altura de la ventana */
   width: 260px;        /* O el ancho que uses */
-  background: linear-gradient(160deg, #0033cc 60%, #0055ff 100%);
+  background:#444; /* Color de fondo del menú */
   z-index: 1000;
   overflow-y: auto;    /* Permite scroll dentro del menú */
   transition: transform 0.3s;
