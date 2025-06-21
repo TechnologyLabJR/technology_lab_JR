@@ -104,10 +104,8 @@ body.dark-mode .redes-sociales a:hover {
 }
 
 .logo-img img {
-  max-height: 150px;
-  width: auto;
-  display: block;
-  margin: 0 auto;
+  max-width: 90vw;
+  height: auto;
 }
 
 .logo-text {
@@ -856,4 +854,31 @@ footer, footer p {
   flex-direction: column;
   align-items: center;
   gap: 24px;
+}
+
+@media (max-width: 700px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 16px 8px;
+  }
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .logo-img img {
+    max-width: 90vw;
+    height: auto;
+  }
+  .logo-text, .header-texto, .logo-text span {
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1.1em;
+  }
 }
