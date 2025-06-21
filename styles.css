@@ -871,14 +871,20 @@ footer, footer p {
     align-items: center;
     width: 100%;
   }
+  .logo-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
   .logo-img img {
-    max-width: 160px;
-    width: 60vw;
+    max-width: 120px;
+    width: 40vw;
     height: auto;
     margin: 0 auto;
     display: block;
   }
-  .logo-text, .header-texto, .logo-text span {
+  .logo-text, .logo-text span {
     text-align: center;
     white-space: normal;
     word-break: break-word;
