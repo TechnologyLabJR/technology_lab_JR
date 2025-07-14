@@ -928,3 +928,18 @@ footer, footer p {
   padding: 0 10px;
   word-break: break-word;
 }
+
+.btn-precios {
+  display: inline-block;
+  background: #0033cc;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.btn-precios:hover {
+  background: #001f99;
+}
