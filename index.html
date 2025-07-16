@@ -236,9 +236,18 @@
     <p>&copy; 2025 Technology Lab JR. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
-document.querySelector('.btn-precios').addEventListener('click', function() {
-  alert('La descarga de la lista de precios ha comenzado.');
+  <div id="aviso-descarga" style="display:none; position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#0033cc; color:#fff; padding:14px 28px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 2px 8px rgba(0,0,0,0.15);"></div>
+
+<script>
+document.querySelectorAll('.btn-precios').forEach(function(btn){
+  btn.addEventListener('click', function() {
+    var aviso = document.getElementById('aviso-descarga');
+    aviso.textContent = 'La descarga de la lista de precios ha comenzado.';
+    aviso.style.display = 'block';
+    setTimeout(function() {
+      aviso.style.display = 'none';
+    }, 2500);
+  });
 });
 </script>
 
