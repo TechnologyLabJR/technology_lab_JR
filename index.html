@@ -48,14 +48,14 @@
 
   <nav class="sidebar" id="sidebar">
   <ul>
-    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="/inicio" data-section="inicio">Inicio</a></li>
     <li><a href="conocenos.html">Conócenos</a></li> <!-- NUEVA OPCIÓN -->
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#trabajos">Nuestros Servicios</a></li>
+    <li><a href="/servicios" data-section="servicios">Servicios</a></li>
+    <li><a href="/trabajos" data-section="trabajos">Nuestros Servicios</a></li>
     <li><a href="PRECIOS TECHNOLOGY LAB JR 2025 - PRECIOS 2025.pdf" download="">Lista de Precios</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><a href="#redes">Redes Sociales</a></li>
-    <li><a href="#ubicacion">Nuestra Ubicación</a></li>
+    <li><a href="/contacto" data-section="contacto">Contacto</a></li>
+    <li><a href="/redes" data-section="redes">Redes Sociales</a></li>
+    <li><a href="/ubicacion" data-section="ubicacion">Nuestra Ubicación</a></li>
 </ul>
   </ul>
   <div class="sidebar-redes">
@@ -248,6 +248,25 @@ document.querySelectorAll('.btn-precios').forEach(function(btn){
       aviso.style.display = 'none';
     }, 2500);
   });
+});
+</script>
+
+<script>
+document.querySelectorAll('nav.sidebar a[data-section]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const section = this.getAttribute('data-section');
+    history.pushState(null, '', '/' + section);
+    document.getElementById(section).scrollIntoView({behavior: 'smooth'});
+  });
+});
+
+// Maneja navegación al usar el botón atrás/adelante del navegador
+window.addEventListener('popstate', function() {
+  const path = location.pathname.replace('/', '');
+  if (path && document.getElementById(path)) {
+    document.getElementById(path).scrollIntoView({behavior: 'smooth'});
+  }
 });
 </script>
 
